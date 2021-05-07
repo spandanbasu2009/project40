@@ -57,13 +57,17 @@ class Game{
                        
                      if(index === player.index){
                          
-                       //add code to display the player's name on the respective basket.
-                       text(allPlayers[plr].name,x-25,y+25);
+                        fill("black");
+                        textSize(25);
+                        text(allPlayers[plr].name ,x-25,y+25);
+
                          
                      }
                     
-                      
-                 
+                     //text to display player score.
+                     fill(255);
+                     text("Player 1 :" + allPlayers.player1.score,50,50);
+                     text("Player 2 :" + allPlayers.player2.score,200,50);
                  }
                 
                 
@@ -94,21 +98,24 @@ class Game{
                          case 5: fruits.addImage("fruit1", fruit5_img);
                          break;
                      }
-                     fruitGroup.add(fruits);
+                     fruitGroup.push(fruits);
                      
                  }
                  
                   if (player.index !== null) {
-                    for (var i = 0; i < fruitGroup.length; i++) {
-                        if (fruitGroup.get(i).isTouching(players)) {
-                            fruitGroup.get(i).destroy();
-                         
-                            
-                        }
-                        
-                    }
+                     //fill code here, to destroy the objects. (Use the one in the class project 40)
+                     // add the condition to calculate the score. 
+                     //and use update() to update the values in the database.
+                     for(var i=0; i<fruitGroup.length; i++){
+                         if(players[player.index-1].isTouching(fruitGroup[i])){
+                             fruitGroup[i].destroy();
+                             player.score =player.score+100;
+                         }
+                     } 
+                     
                   }
                 
+                  
 
          
          
